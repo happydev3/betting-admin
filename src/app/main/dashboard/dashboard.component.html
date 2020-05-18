@@ -1,0 +1,75 @@
+  <div style="display: block; width: 100%;">
+    <div class="table-header">
+      Registered Users Table
+    </div>
+    <mat-form-field style="width: 30%; margin-right: 1%; float: right;">
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+    <div class="datatable" style="overflow-x: auto;">
+      <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" overflow>
+    
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+          <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="pseduo">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nick Name </th>
+          <td mat-cell *matCellDef="let row"> {{row.pseduo}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+          <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="days_15">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> 15days Type </th>
+          <td mat-cell *matCellDef="let row"> {{row.days_15}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="days_30">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> 30days Type </th>
+          <td mat-cell *matCellDef="let row"> {{row.days_30}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="pay_count">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Pay Count </th>
+          <td mat-cell *matCellDef="let row"> {{row.pay_count}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="pay_cost">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Pay Cost </th>
+          <td mat-cell *matCellDef="let row"> 
+            {{ row.pay_cost ? row.pay_cost/100 + ' €' : ''}}  
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="res_day">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Res Day </th>
+          <td mat-cell *matCellDef="let row"> 
+            {{row.res_day == 'Invalid date' ? '' : row.res_day}}  
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+          <td mat-cell *matCellDef="let row"> 
+            <button mat-raised-button color="warn" (click)="blockUser(row._id)">
+             {{row.img_state == 1 ? 'Block' : 'Unblock'}}
+            </button>
+            <button mat-raised-button color="primary" (click)="lockUser(row._id)">
+              {{row.state == 1 ? 'Lock' : row.state == 2 ? 'Unlock' : ''}}
+            </button>
+          </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+        </tr>
+      </table>
+    
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+  </div>
+  
