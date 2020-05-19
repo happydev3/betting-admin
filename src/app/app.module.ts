@@ -26,6 +26,8 @@ import { SubscriptionComponent } from './main/subscription/subscription.componen
 import { AuthGuardService } from './services/auth-guard.service';
 import { RegisterComponent } from './main/register/register.component';
 import { LoginComponent } from './main/login/login.component';
+import { BlockUserComponent } from './main/block-user/block-user.component';
+import { LockUserComponent } from './main/lock-user/lock-user.component';
 
 const appRoutes: Routes = [
     {
@@ -56,6 +58,16 @@ const appRoutes: Routes = [
         component: SubscriptionComponent,
         canActivate: [AuthGuardService]
     },
+    {
+        path: 'block-user',
+        component: BlockUserComponent,
+        canActivate: [AuthGuardService]
+    },
+    {
+        path: 'lock-user',
+        component: LockUserComponent,
+        canActivate: [AuthGuardService]
+    },
 ];
 
 @NgModule({
@@ -66,6 +78,8 @@ const appRoutes: Routes = [
         SubscriptionComponent,
         RegisterComponent,
         LoginComponent,
+        BlockUserComponent,
+        LockUserComponent,
     ],
     imports: [
         BrowserModule,

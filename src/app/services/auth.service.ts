@@ -24,8 +24,8 @@ export interface RegisterContext {
 export class AuthService {
 
   currentUser = {};
-  startpoint: string = 'http://localhost:3000/admin';
-  // startpoint: string = 'http://api.winorball.com/admin';
+  // startpoint: string = 'http://localhost:3000/admin';
+  startpoint: string = 'http://api.winorball.com/admin';
   constructor(private httpClient: HttpClient, public router: Router){}
 
   register(user): Observable<any> {

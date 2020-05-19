@@ -11,8 +11,8 @@ import { AuthService } from './auth.service';
 })
 export class UserService {
 
-  public startpoint: string = 'http://localhost:3000/admin';
-  // public startpoint: string = 'http://api.winorball.com/admin';
+  // public startpoint: string = 'http://localhost:3000/admin';
+  public startpoint: string = 'http://api.winorball.com/admin';
   public token = this.authService.getAccessToken();
   public headers = new HttpHeaders().set('Authorization', 'Bear ' + this.token);
 
@@ -37,6 +37,25 @@ export class UserService {
     return this.httpClient.get(`${this.startpoint}/onlineuser`, {headers: this.headers}).pipe(
       map((res: Response) => {
         console.log(res);
+        return res || {}
+      }),
+      catchError(this.handleError)
+    )
+  }
+
+  getBlockOnlineUser(): Observable<any> {
+    return this.httpClient.get(`${this.startpoint}/blockuser`, {headers: this.headers}).pipe(
+      map((res: Response) => {
+        console.log(res);
+        return res || {}
+      }),
+      catchError(this.handleError)
+    )
+  }
+
+  getLockUser(): Observable<any> {
+    return this.httpClient.get(`${this.startpoint}/lockuser`, {headers: this.headers}).pipe(
+      map((res: Response) => {
         return res || {}
       }),
       catchError(this.handleError)
