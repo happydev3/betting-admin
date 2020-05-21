@@ -35,13 +35,34 @@ export const navigation: FuseNavigation[] = [
                 icon     : 'lock',
                 url      : '/lock-user',
             },
+            // {
+            //     id       : 'Subscription',
+            //     title    : 'Subscription',
+            //     type     : 'item',
+            //     icon     : 'attach_money',
+            //     url      : '/subscription',
+            // },
             {
-                id       : 'Subscription',
-                title    : 'Subscription',
+                id       : 'disputes',
+                title    : 'Disputes',
                 type     : 'item',
-                icon     : 'attach_money',
-                url      : '/subscription',
-            }
+                icon     : 'error',
+                url      : '/disputes',
+            },
+            {
+                id       : 'posts',
+                title    : 'Posts',
+                type     : 'item',
+                icon     : 'dashboard',
+                url      : '/posts',
+            },
+            // {
+            //     id       : 'answers',
+            //     title    : 'Answers',
+            //     type     : 'item',
+            //     icon     : 'dashboard',
+            //     url      : '/answers',
+            // },
         ]
     }
 ];

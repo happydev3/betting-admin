@@ -28,6 +28,9 @@ import { RegisterComponent } from './main/register/register.component';
 import { LoginComponent } from './main/login/login.component';
 import { BlockUserComponent } from './main/block-user/block-user.component';
 import { LockUserComponent } from './main/lock-user/lock-user.component';
+import { DisputeComponent } from './main/dispute/dispute.component';
+import { PostsComponent } from './main/posts/posts.component';
+import { AnswersComponent } from './main/answers/answers.component';
 
 const appRoutes: Routes = [
     {
@@ -68,6 +71,21 @@ const appRoutes: Routes = [
         component: LockUserComponent,
         canActivate: [AuthGuardService]
     },
+    {
+        path: 'disputes',
+        component: DisputeComponent,
+        canActivate: [AuthGuardService]
+    },
+    {
+        path: 'posts',
+        component: PostsComponent,
+        canActivate: [AuthGuardService]
+    },
+    {
+        path: 'answers',
+        component: AnswersComponent,
+        canActivate: [AuthGuardService]
+    },
 ];
 
 @NgModule({
@@ -80,6 +98,9 @@ const appRoutes: Routes = [
         LoginComponent,
         BlockUserComponent,
         LockUserComponent,
+        DisputeComponent,
+        PostsComponent,
+        AnswersComponent,
     ],
     imports: [
         BrowserModule,

@@ -5,7 +5,7 @@
     <mat-form-field style="width: 30%; margin-right: 1%; float: right;">
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
     </mat-form-field>
-    <div class="datatable">
+    <div class="datatable" style="overflow-x: auto;">
       <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
     
         <!-- Progress Column -->

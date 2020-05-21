@@ -1,0 +1,55 @@
+<div style="display: block; width: 100%;">
+    <div class="table-header">
+      Disputed Messages Table
+    </div>
+    <mat-form-field style="width: 30%; margin-right: 1%; float: right;">
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+    <div class="datatable" style="overflow-x: auto;">
+      <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    
+        <!-- Progress Column -->
+        <ng-container matColumnDef="username">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+          <td mat-cell *matCellDef="let row"> {{row.username}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="useremail">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+          <td mat-cell *matCellDef="let row"> {{row.useremail}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="message">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Message </th>
+          <td mat-cell *matCellDef="let row"> <p style="max-width: 700px; height: 100px; overflow: auto;">{{row.message}}</p> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="count">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Count </th>
+          <td mat-cell *matCellDef="let row"> {{row.count}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+          <td mat-cell *matCellDef="let row"> 
+            <button mat-raised-button [ngClass]="row.img_state == 1 ? 'warn' : 'green-800'" (click)="blockUser(row.userId)">
+              {{row.img_state == 1 ? 'Block' : 'Unblock'}}
+            </button>
+            <button mat-raised-button [ngClass]="row.state == 1 ? 'orange-800' : row.state == 2 ? 'light-blue-A700' : 'blue-grey-800'" (click)="lockUser(row.userId)">
+              {{row.state == 1 ? 'Lock' : row.state == 2 ? 'Unlock' : ''}}
+            </button>
+            <button mat-raised-button [ngClass]="row.state == 1 ? 'primary' : row.state == 2 ? 'light-blue-A700' : 'blue-grey-800'" (click)="deleteDispute(row.id)">
+              Delete
+            </button>
+          </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+        </tr>
+      </table>
+    
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+  </div>
+  

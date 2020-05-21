@@ -84,6 +84,35 @@ export class UserService {
     )
   }
 
+  getDispute(): Observable<any> {
+    return this.httpClient.get(`${this.startpoint}/dispute`, {headers: this.headers}).pipe(
+      map((res: Response) => {
+        console.log(res);
+        return res || {}
+      }),
+      catchError(this.handleError)
+    )
+  }
+
+  deleteDispute(id): Observable<any> {
+    return this.httpClient.post(`${this.startpoint}/delete-dispute`, {id: id}, {headers:this.headers}).pipe(
+      map((res: Response) => {
+        console.log(res);
+        return res || {}
+      })
+    )
+  }
+
+  getAllPosts(): Observable<any> {
+    return this.httpClient.get(`${this.startpoint}/all-posts`, {headers: this.headers}).pipe(
+      map((res: Response) => {
+        console.log(res);
+        return res || {}
+      }),
+      catchError(this.handleError)
+    )
+  }
+
   handleError(error: HttpErrorResponse) {
     let msg = '';
     if (error.error instanceof ErrorEvent) {
